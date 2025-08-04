@@ -1,5 +1,7 @@
 "use client"
 
+import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
+import { WarpBackground } from "@/components/magicui/warp-background"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import Image from "next/image"
@@ -7,40 +9,16 @@ import Image from "next/image"
 export default function Header() {
   return (
     <header className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-emerald-500/5" />
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgb(16 185 129 / 0.1)" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-
-        {/* Animated Dots */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-400/30 rounded-full animate-pulse" />
-        <div
-          className="absolute top-1/3 right-1/3 w-1 h-1 bg-emerald-400/40 rounded-full animate-ping"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-emerald-400/20 rounded-full animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-2/3 right-1/4 w-1 h-1 bg-emerald-400/30 rounded-full animate-ping"
-          style={{ animationDelay: "0.5s" }}
-        />
-      </div>
-
+      <AnimatedGridPattern className="absolute inset-0 opacity-45" />
       {/* Fixed Navigation */}
       <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
         <div className="flex items-center gap-8 px-6 py-3 bg-gray-950/80 backdrop-blur-md rounded-full border border-gray-800/50">
           <a href="/" className="text-white text-sm font-medium hover:text-emerald-400 transition-colors">
             Home
           </a>
+          <a href="/about" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">about</a>
+          <a href="/projects" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">services</a>
+          <a href="/projects" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">projects</a>
           <a href="/blog" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">
             Blog
           </a>
@@ -54,10 +32,10 @@ export default function Header() {
       {/* Hero Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Profile Image */}
-        <div className="relative w-24 h-24 mx-auto mb-8 rounded-full overflow-hidden border border-gray-800">
+        <div className="relative w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden border border-gray-800">
           <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
             <Image
-              src="/placeholder.svg?height=96&width=96&text=JC"
+              src="/profile.jpg"
               alt="Joaquin Cortez"
               width={96}
               height={96}
@@ -67,8 +45,9 @@ export default function Header() {
         </div>
 
         {/* Main Content */}
-        <div className="space-y-6 mb-12">
-          <p className="text-gray-400 text-lg font-medium">Hi, I'm Joaquín 👋</p>
+        
+        <div className="mt-  mb-12">
+          <p className="text-gray-400 text-xl font-medium">Hi, I'm Joaquín 👋</p>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight">
             Full-stack & AI
@@ -76,7 +55,7 @@ export default function Header() {
             <span className="text-emerald-400">Developer</span>
           </h1>
 
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mt-4">
             I love building eye-catching products with data-driven results that make an impact on people.
           </p>
         </div>
@@ -101,23 +80,7 @@ export default function Header() {
         <Button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30">
           Let's Work Together
         </Button>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          
-        </div>
       </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
     </header>
   )
 }

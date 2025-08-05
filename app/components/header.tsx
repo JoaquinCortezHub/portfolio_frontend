@@ -87,9 +87,6 @@ export default function Header() {
           <a href="https://x.com/JoaCortezMdz" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Twitter className="h-5 w-5" />
           </a>
-          {/* <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSDbhDvzVQJLKxDcWMkhcFzvtdPnTHcGbsglptWwFdFZGCSbslhBvFbkCqtbxtGdRhpljfsr" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
-            <Mail className="h-5 w-5" />
-          </a> */}
         </div>
 
         {/* CTA Button */}

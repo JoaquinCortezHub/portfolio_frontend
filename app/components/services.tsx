@@ -1,58 +1,51 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Code, Brain, Smartphone, Database, Cloud, Zap, ArrowRight, Sparkles } from "lucide-react"
+import { Code, Brain, Smartphone, Database, Cloud, Zap, ArrowRight, Sparkles, DatabaseIcon, LucideGitGraph, Edit } from "lucide-react"
 
 export default function Services() {
   const services = [
     {
-      icon: <Code className="h-8 w-8" />,
-      title: "Full-Stack Development",
+      icon: <LucideGitGraph className="h-8 w-8" />,
+      title: "AI Infrastructure",
       description:
-        "End-to-end web application development using modern frameworks and best practices for scalable solutions.",
-      features: ["React/Next.js", "Node.js/Python", "Database Design"],
+        "End-to-end ML powered insights to understand your business and plan for the future.",
+      features: ["Data Analysis", "Model Training", "Analytics Dashboard Design"],
       size: "large",
       highlight: true,
     },
     {
       icon: <Brain className="h-8 w-8" />,
-      title: "AI Integration",
-      description: "Implement machine learning models and AI-powered features into your applications.",
-      features: ["ML Models", "OpenAI API", "Custom AI Solutions"],
+      title: "Agent Development",
+      description: "Develop and maintain personalized AI agents tailored to your needs.",
+      features: ["ML Models", "Multi-modal Agents", "Custom Automations"],
       size: "large",
       highlight: true,
     },
-    {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile Development",
-      description: "Cross-platform mobile applications with React Native.",
-      features: ["React Native", "iOS/Android"],
-      size: "small",
-      highlight: false,
-    },
-    {
-      icon: <Database className="h-8 w-8" />,
-      title: "Database Design",
-      description: "Scalable database architecture and optimization.",
-      features: ["PostgreSQL", "MongoDB", "Redis"],
-      size: "small",
-      highlight: false,
-    },
-    {
-      icon: <Cloud className="h-8 w-8" />,
-      title: "Cloud Solutions",
-      description: "Deploy and manage applications on cloud platforms with DevOps best practices.",
-      features: ["AWS/Azure", "Docker", "CI/CD"],
-      size: "medium",
-      highlight: false,
-    },
-    {
-      icon: <Zap className="h-8 w-8" />,
-      title: "Performance Optimization",
-      description: "Optimize application performance and user experience.",
-      features: ["Speed Optimization", "SEO", "Analytics"],
-      size: "medium",
-      highlight: false,
-    },
+    // {
+    //   icon: <Smartphone className="h-8 w-8" />,
+    //   title: "Mobile Development",
+    //   description: "Cross-platform mobile applications with React Native.",
+    //   features: ["React Native", "iOS/Android"],
+    //   size: "small",
+    //   highlight: false,
+    // },
+    // {
+    //   icon: <Database className="h-8 w-8" />,
+    //   title: "Database Design",
+    //   description: "Scalable database architecture and optimization.",
+    //   features: ["PostgreSQL", "MongoDB", "Redis"],
+    //   size: "small",
+    //   highlight: false,
+    // },
+    // {
+    //   icon: <Cloud className="h-8 w-8" />,
+    //   title: "Cloud Solutions",
+    //   description: "Deploy and manage applications on cloud platforms with DevOps best practices.",
+    //   features: ["AWS/Azure", "Docker", "CI/CD"],
+    //   size: "medium",
+    //   highlight: false,
+    // },
+
   ]
 
   return (
@@ -160,7 +153,7 @@ export default function Services() {
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-4 px-8 py-4 bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-emerald-400/30">
             <div className="text-emerald-400">
-              <Zap className="h-6 w-6" />
+              <Edit className="h-6 w-6" />
             </div>
             <div className="text-left">
               <p className="text-white font-semibold">Need something custom?</p>

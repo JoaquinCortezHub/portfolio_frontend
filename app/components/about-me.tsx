@@ -12,28 +12,28 @@ export default function AboutMe() {
   const tabs = [
     {
       id: "story",
-      label: "My Story",
+      label: "My Background",
       icon: <User className="h-4 w-4" />,
-      title: "From Curiosity to Code",
+      title: "From commerce student to software developer",
       content: (
         <div className="space-y-6">
           <p className="text-gray-300 leading-relaxed text-lg">
-            My journey into tech started with a simple question: "How does this work?" That curiosity led me from
-            tinkering with my first computer to building complex AI-powered applications that solve real-world problems.
-          </p>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Today, I bridge the gap between cutting-edge technology and practical business solutions, helping companies
-            leverage the power of AI and modern web development.
+          After studying international commerce for a semester, I decided to take an 180° 
+          turn and dive into tech. I started doing some graphic design work, to then break into 
+          UX/UI design, which I studied for almost 2 years. After an eye-opening year in the USA, 
+          I realized building meaningful, innovative products was what I really loved. Since then, 
+          I have been polishing and bettering my programming skills to offer high-quality products to 
+          my clients.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm">
-              5+ Years Experience
+              2+ Years Experience
             </Badge>
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm">
-              50+ Projects
+              15+ Projects
             </Badge>
             <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2 text-sm">
-              Global Clients
+              +2000 hours studied
             </Badge>
           </div>
         </div>
@@ -51,26 +51,26 @@ export default function AboutMe() {
             <div className="space-y-8">
               <div className="relative pl-12">
                 <div className="absolute left-2 top-2 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-950"></div>
-                <h4 className="font-bold text-white text-lg mb-2">Senior Full-Stack Developer</h4>
-                <p className="text-emerald-400 font-medium mb-3">2022 - Present</p>
+                <h4 className="font-bold text-white text-lg mb-2">Full-Stack & AI Developer</h4>
+                <p className="text-emerald-400 font-medium mb-3">2023 - Present</p>
                 <p className="text-gray-300 leading-relaxed">
-                  Leading AI integration projects and building scalable web applications for enterprise clients.
+                  Creating high-perfornance, scalabale AI & ML projects that drive massive growth.
                 </p>
               </div>
               <div className="relative pl-12">
                 <div className="absolute left-2 top-2 w-4 h-4 bg-emerald-500/60 rounded-full border-4 border-gray-950"></div>
-                <h4 className="font-bold text-white text-lg mb-2">Full-Stack Developer</h4>
-                <p className="text-gray-400 font-medium mb-3">2020 - 2022</p>
+                <h4 className="font-bold text-white text-lg mb-2">Front-End Developer</h4>
+                <p className="text-gray-400 font-medium mb-3">2022 - 2023</p>
                 <p className="text-gray-300 leading-relaxed">
-                  Developed modern web applications using React, Node.js, and cloud technologies.
+                  Developed modern web applications using React, Next.js, and Tailwind CSS.
                 </p>
               </div>
               <div className="relative pl-12">
                 <div className="absolute left-2 top-2 w-4 h-4 bg-emerald-500/30 rounded-full border-4 border-gray-950"></div>
-                <h4 className="font-bold text-white text-lg mb-2">Junior Developer</h4>
-                <p className="text-gray-400 font-medium mb-3">2019 - 2020</p>
+                <h4 className="font-bold text-white text-lg mb-2">UX/UI Designer</h4>
+                <p className="text-gray-400 font-medium mb-3">2021 - 2022</p>
                 <p className="text-gray-300 leading-relaxed">
-                  Started my professional journey building responsive websites and learning modern frameworks.
+                  Designing intuitive, user-friendly interfaces that enhance user experience.
                 </p>
               </div>
             </div>
@@ -98,15 +98,15 @@ export default function AboutMe() {
             </p>
           </div>
           <div className="group p-6 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 rounded-2xl border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300">
-            <h4 className="font-bold text-emerald-300 text-lg mb-3">AI Integration</h4>
+            <h4 className="font-bold text-emerald-300 text-lg mb-3">Data-Driven Results</h4>
             <p className="text-gray-300 leading-relaxed">
-              Leveraging machine learning to create intelligent, adaptive applications that learn and improve.
+              Leveraging AI & ML to create intelligent, adaptive applications that learn and improve.
             </p>
           </div>
           <div className="group p-6 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 rounded-2xl border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-300">
-            <h4 className="font-bold text-emerald-300 text-lg mb-3">Clean Code</h4>
+            <h4 className="font-bold text-emerald-300 text-lg mb-3">Personalized Solutions</h4>
             <p className="text-gray-300 leading-relaxed">
-              Maintainable, well-documented code that stands the test of time and scales with your business.
+              Tailored solutions that meet your unique needs and drive measurable results.
             </p>
           </div>
         </div>
@@ -121,8 +121,7 @@ export default function AboutMe() {
         <div className="space-y-8">
           <p className="text-gray-300 leading-relaxed text-lg">
             I believe the best developers are well-rounded individuals. When I'm not building applications, you'll find
-            me exploring new technologies, contributing to open-source projects, or sharing knowledge through technical
-            writing.
+            me exploring new technologies, playing my guitar, or hiking somewhere here in my hometown.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="group text-center p-6 bg-gray-900/30 rounded-2xl border border-gray-800/50 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300">
@@ -194,7 +193,7 @@ export default function AboutMe() {
           <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
             About Me
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">Get to know the person behind the code</p>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">Get to know the person behind the code</p>
         </div>
 
         {/* Main Layout */}

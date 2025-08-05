@@ -121,3 +121,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dark .dialog-content {
+  background-color: #1a202c;
+  border-color: #2d3748;
+  color: #f7fafc;
+}
+
+.dark .dialog-header {
+  border-bottom-color: #2d3748;
+}
+
+.dark .dialog-title {
+  color: #f7fafc;
+}
+
+.dark .dialog-description {
+  color: #a0aec0;
+}

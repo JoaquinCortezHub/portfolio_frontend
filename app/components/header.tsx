@@ -1,12 +1,28 @@
 "use client"
 
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
-import { WarpBackground } from "@/components/magicui/warp-background"
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { Github, Linkedin, Mail, Twitter } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
 
 export default function Header() {
+  const [isCalendlyClicked, setIsCalendlyClicked] = useState(false)
+
+  const handleCalendlyClick = () => {
+    setIsCalendlyClicked(true)
+    window.open("https://calendly.com/joaquinlucascortez/discovery-call", "_blank")
+  }
+
   return (
     <header className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       <AnimatedGridPattern className="absolute inset-0 opacity-45" />
@@ -46,8 +62,8 @@ export default function Header() {
 
         {/* Main Content */}
         
-        <div className="mt-  mb-12">
-          <p className="text-gray-400 text-xl font-medium">Hi, I'm Joaquín 👋</p>
+        <div className="mb-12">
+          <p className="text-gray-400 text-2xl font-medium">Hi, I'm Joaquín 👋</p>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight">
             Full-stack & AI
@@ -62,24 +78,46 @@ export default function Header() {
 
         {/* Social Links */}
         <div className="flex justify-center items-center gap-6 mb-12">
-          <a href="#" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
+          <a href="https://github.com/JoaquinCortezHub" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Github className="h-5 w-5" />
           </a>
-          <a href="#" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
+          <a href="https://www.linkedin.com/in/joaqu%C3%ADn-cortez/" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="#" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
+          <a href="https://x.com/JoaCortezMdz" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Twitter className="h-5 w-5" />
           </a>
-          <a href="#" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
+          {/* <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSDbhDvzVQJLKxDcWMkhcFzvtdPnTHcGbsglptWwFdFZGCSbslhBvFbkCqtbxtGdRhpljfsr" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Mail className="h-5 w-5" />
-          </a>
+          </a> */}
         </div>
 
         {/* CTA Button */}
-        <Button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30">
-          Let's Work Together
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-8 text-lg rounded-full transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30">
+              Let's Work Together
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px] bg-gray-950/80 backdrop-blur-md border-gray-800/50 text-white">
+            <DialogHeader>
+              <DialogTitle className="text-white text-2xl font-bold">Book a Discovery Call</DialogTitle>
+              <DialogDescription className="text-gray-400 mt-2 text-md">
+                First, book a discovery call with me to discuss your project. After that, you'll be able to fill out a form with more details about your business.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <Button onClick={handleCalendlyClick} className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold">
+                Book a Call on Calendly
+              </Button>
+              <Button asChild disabled={!isCalendlyClicked} className="bg-gray-500 hover:bg-gray-400 text-black font-semibold">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLScdvC-632m2e-20d5vA2-AdF-uJ3A-2Gf-RAa-Fw-B-g-O-w/viewform?usp=sf_link" target="_blank">
+                  Fill Out Business Details
+                </Link>
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </header>
   )

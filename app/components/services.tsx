@@ -56,7 +56,7 @@ export default function Services() {
   ]
 
   return (
-    <section className="py-20 px-6 bg-gray-900/20 relative overflow-hidden">
+    <section id="services" className="py-20 px-6 bg-gray-900/20 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-green-500/5" />
       <div className="absolute top-0 left-1/3 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl" />

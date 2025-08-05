@@ -10,7 +10,7 @@ export default function AboutMe() {
 	};
 
 	return (
-		<section className="py-24 px-6 relative overflow-hidden">
+		<section id="about" className="py-24 px-6 relative overflow-hidden">
 			{/* Background Effects */}
 			<div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-emerald-500/5" />
 			<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />

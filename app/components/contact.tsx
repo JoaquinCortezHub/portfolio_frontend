@@ -4,7 +4,7 @@ import { Mail, MessageCircle, Github, Linkedin, Twitter, MapPin } from "lucide-r
 
 export default function Contact() {
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-gray-950 via-green-900/20 to-emerald-900/20">
+    <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-950 via-green-900/20 to-emerald-900/20">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">

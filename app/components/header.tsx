@@ -32,16 +32,16 @@ export default function Header() {
           <a href="/" className="text-white text-sm font-medium hover:text-emerald-400 transition-colors">
             Home
           </a>
-          <a href="/about" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">about</a>
-          <a href="/projects" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">services</a>
-          <a href="/projects" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">projects</a>
-          <a href="/blog" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors">
+          <a href="#about" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors ">about</a>
+          <a href="#services" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors ">services</a>
+          <a href="#projects" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors ">projects</a>
+          <a href="/blog" className="text-gray-400 text-sm font-medium hover:text-emerald-400 transition-colors ">
             Blog
           </a>
           <div className="w-px h-4 bg-gray-700" />
-          <button className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
+          <a href="#contact" className="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors">
             Contact
-          </button>
+          </a>
         </div>
       </nav>
 

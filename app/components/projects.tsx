@@ -14,7 +14,7 @@ export default function Projects() {
       technologies: ["React", "Python", "TensorFlow", "PostgreSQL", "AWS"],
       github: "#",
       demo: "#",
-      featured: true,
+      featured: false,
       status: "Live",
     },
     {
@@ -33,11 +33,11 @@ export default function Projects() {
       title: "Smart Content Generator",
       description:
         "AI-driven content creation tool using GPT models for automated writing assistance and SEO optimization.",
-      image: "/placeholder.svg?height=300&width=400&text=Content+Generator",
+      image: "",
       technologies: ["TypeScript", "OpenAI API", "React", "Tailwind CSS"],
       github: "#",
       demo: "#",
-      featured: true,
+      featured: false,
       status: "Live",
     },
     {
@@ -67,7 +67,7 @@ export default function Projects() {
             <Zap className="h-4 w-4 text-emerald-400" />
             <span className="text-emerald-400 font-medium">Featured Work</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent pb-3">
             Featured Projects
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

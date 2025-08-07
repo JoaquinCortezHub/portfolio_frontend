@@ -10,16 +10,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Github, Info, Linkedin, Mail, Twitter, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
 export default function Header() {
-  const [isCalendlyClicked, setIsCalendlyClicked] = useState(false)
+  const [isCalendlyClicked, setIsCalendlyClicked] = useState(false);
+  const [isFormEnabled, setIsFormEnabled] = useState(false);
 
   const handleCalendlyClick = () => {
     setIsCalendlyClicked(true)
+    setIsFormEnabled(true)
     window.open("https://calendly.com/joaquinlucascortez/discovery-call", "_blank")
   }
 
@@ -84,8 +86,8 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/joaqu%C3%ADn-cortez/" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="https://x.com/JoaCortezMdz" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
-            <Twitter className="h-5 w-5" />
+          <a href="https://x.com/JoacoLCortez" className="p-3 text-gray-400 hover:text-emerald-400 transition-colors">
+            <X className="h-5 w-5" />
           </a>
         </div>
 
@@ -104,11 +106,19 @@ export default function Header() {
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
+              <label className="flex gap-2 items-center">
+                <Info />
+                First schedule a free call with me: 
+                </label>
               <Button onClick={handleCalendlyClick} className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold">
                 Book a Call on Calendly
               </Button>
-              <Button asChild disabled={!isCalendlyClicked} className="bg-gray-500 hover:bg-gray-400 text-black font-semibold">
-                <Link href="https://docs.google.com/forms/d/e/1FAIpQLScdvC-632m2e-20d5vA2-AdF-uJ3A-2Gf-RAa-Fw-B-g-O-w/viewform?usp=sf_link" target="_blank">
+              <label className="flex gap-2 items-center">
+                <Info />
+                Then please fill out this form: 
+                </label>
+              <Button asChild disabled={!isFormEnabled} className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold">
+                <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfrI8BeMmE3GN7Eg2tVT2acOfgAFSzc2oL111FhY3cC5faEPw/viewform?usp=dialog" target="_blank">
                   Fill Out Business Details
                 </Link>
               </Button>

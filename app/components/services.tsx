@@ -130,7 +130,7 @@ export default function Services() {
 
                 {/* CTA Button */}
                 <Button
-                  className={`w-full group/btn transition-all duration-300 ${
+                  className={`w-full group/btn transition-all hover:cursor-pointer duration-300 ${
                     service.highlight
                       ? "bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 text-black font-semibold shadow-lg shadow-emerald-500/25"
                       : "bg-transparent border border-emerald-400/50 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-400"
@@ -159,7 +159,7 @@ export default function Services() {
               <p className="text-white font-semibold">Need something custom?</p>
               <p className="text-gray-400 text-sm">Let's discuss your unique requirements</p>
             </div>
-            <Button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold">Contact Me</Button>
+            <Button className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold hover:cursor-pointer">Contact Me</Button>
           </div>
         </div>
       </div>

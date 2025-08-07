@@ -37,7 +37,7 @@ export default function AboutMe() {
 								<button
 									key={tab.id}
 									onClick={() => handleTabClick(index)}
-									className={`w-full flex items-center gap-4 p-4 rounded-2xl text-left transition-all duration-300 group ${
+									className={`w-full flex items-center gap-4 p-4 rounded-2xl text-left transition-all duration-300 group hover:cursor-pointer ${
 										activeTab === index
 											? "bg-emerald-500/20 border border-emerald-500/30 text-emerald-300"
 											: "bg-gray-900/30 border border-gray-800/50 text-gray-400 hover:text-gray-300 hover:bg-gray-900/50 hover:border-gray-700/50"

@@ -7,21 +7,16 @@ export default function SkillsBanner() {
     "TypeScript",
     "Node.js",
     "Python",
-    "TensorFlow",
-    "PyTorch",
     "OpenAI API",
     "PostgreSQL",
-    "MongoDB",
-    "AWS",
     "Docker",
-    "Kubernetes",
-    "GraphQL",
     "REST APIs",
     "Machine Learning",
-    "Deep Learning",
-    "Natural Language Processing",
-    "Computer Vision",
     "Tailwind CSS",
+    "Git",
+    "UX/UI",
+    "Nest.js",
+    "Scikit Learn"
   ]
 
   return (

@@ -39,7 +39,7 @@ export default function BlogPosts() {
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent pb-3">
             Recent Blog Posts
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

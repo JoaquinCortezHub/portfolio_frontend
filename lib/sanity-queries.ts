@@ -23,7 +23,10 @@ export const postsQuery = `
     _id,
     title,
     description,
-    slug,
+    slug {
+      _type,
+      current
+    },
     publishedAt,
     cover {
       asset -> {

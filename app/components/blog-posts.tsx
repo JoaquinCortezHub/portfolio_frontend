@@ -4,8 +4,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar } from "lucide-react"
 import Image from "next/image"
-import { client } from "@/sanity/client"
-import { postsQuery } from "@/lib/sanity-queries"
 import { useEffect, useState } from "react"
 
 interface Post {
@@ -92,11 +90,15 @@ export default function BlogPosts() {
         ]
         
         try {
-          const fetchedPosts = await client.fetch(postsQuery)
+          const response = await fetch('/api/posts')
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          const fetchedPosts = await response.json()
           console.log("Posts fetched successfully:", fetchedPosts)
           setPosts(fetchedPosts.length > 0 ? fetchedPosts : mockPosts)
         } catch (sanityError) {
-          console.warn("Sanity fetch failed, using mock data:", sanityError)
+          console.warn("API fetch failed, using mock data:", sanityError)
           setPosts(mockPosts)
         }
         

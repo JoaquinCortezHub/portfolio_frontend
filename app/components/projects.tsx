@@ -2,57 +2,70 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, Star, Zap } from "lucide-react"
 import Image from "next/image"
+import { client } from "@/sanity/client"
+import { projectsQuery } from "@/lib/sanity-queries"
 
-export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      title: "AI-Powered Analytics Dashboard",
-      description:
-        "Real-time analytics platform with machine learning insights and predictive modeling for enterprise-level data processing.",
-      image: "/placeholder.svg?height=300&width=400&text=Analytics+Dashboard",
-      technologies: ["React", "Python", "TensorFlow", "PostgreSQL", "AWS"],
+interface SanityProject {
+  _id: string
+  title: string
+  status: string
+  mainImage?: {
+    asset: {
+      url: string
+    }
+  }
+  body: any[]
+  categories: Array<{ title: string }>
+}
+
+interface Project {
+  id: string
+  title: string
+  description: string
+  image: string
+  technologies: string[]
+  github: string
+  demo: string
+  featured: boolean
+  status: string
+}
+
+function extractTextFromBody(body: any[]): string {
+  if (!body || !Array.isArray(body)) return ""
+  
+  return body
+    .filter(block => block._type === 'block')
+    .map(block => 
+      block.children
+        ?.filter((child: any) => child._type === 'span')
+        ?.map((span: any) => span.text)
+        ?.join('') || ''
+    )
+    .join(' ')
+    .substring(0, 150) + (body.length > 0 ? '...' : '')
+}
+
+export default async function Projects() {
+  let projects: Project[] = []
+
+  try {
+    const sanityProjects: SanityProject[] = await client.fetch(projectsQuery)
+    
+    projects = sanityProjects.map((project) => ({
+      id: project._id,
+      title: project.title,
+      description: extractTextFromBody(project.body),
+      image: project.mainImage?.asset?.url || "/placeholder.svg",
+      technologies: project.categories?.map(cat => cat.title) || [],
       github: "#",
       demo: "#",
       featured: false,
-      status: "Live",
-    },
-    {
-      id: 2,
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce solution with payment integration and advanced inventory management system.",
-      image: "/placeholder.svg?height=300&width=400&text=E-commerce+Platform",
-      technologies: ["Next.js", "Node.js", "MongoDB", "Stripe", "Docker"],
-      github: "#",
-      demo: "#",
-      featured: false,
-      status: "In Development",
-    },
-    {
-      id: 3,
-      title: "Smart Content Generator",
-      description:
-        "AI-driven content creation tool using GPT models for automated writing assistance and SEO optimization.",
-      image: "",
-      technologies: ["TypeScript", "OpenAI API", "React", "Tailwind CSS"],
-      github: "#",
-      demo: "#",
-      featured: false,
-      status: "Live",
-    },
-    {
-      id: 4,
-      title: "Real-time Chat Application",
-      description:
-        "Scalable chat platform with WebSocket integration, message encryption, and advanced moderation features.",
-      image: "/placeholder.svg?height=300&width=400&text=Chat+Application",
-      technologies: ["Socket.io", "Express", "React", "Redis", "JWT"],
-      github: "#",
-      demo: "#",
-      featured: false,
-      status: "Live",
-    },
-  ]
+      status: project.status || "Live",
+    }))
+  } catch (error) {
+    console.error("Error fetching projects:", error)
+    projects = []
+  }
 
   return (
     <section id="projects" className="py-20 px-6 relative">

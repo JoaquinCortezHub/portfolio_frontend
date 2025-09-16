@@ -44,3 +44,31 @@ export const postsQuery = `
     content
   }
 `;
+
+export const servicesQuery = `
+  *[_type == "services"] | order(publishedAt desc) {
+    _id,
+    name,
+    slug,
+    description,
+    keywords,
+    body,
+    relatedProjects,
+    featured,
+    publishedAt
+  }
+`;
+
+export const serviceBySlugQuery = `
+  *[_type == "services" && slug.current == $slug][0] {
+    _id,
+    name,
+    slug,
+    description,
+    keywords,
+    body,
+    relatedProjects,
+    featured,
+    publishedAt
+  }
+`;

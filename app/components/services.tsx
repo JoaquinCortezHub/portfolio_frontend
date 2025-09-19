@@ -29,7 +29,7 @@ const getServiceIcon = (keywords: string[]) => {
   if (keywordString.includes('ai') || keywordString.includes('machine learning') || keywordString.includes('ml')) {
     return <Brain className="h-8 w-8" />
   }
-  if (keywordString.includes('infrastructure') || keywordString.includes('data')) {
+  if (keywordString.includes('infrastructure') || keywordString.includes('AI')) {
     return <LucideGitGraph className="h-8 w-8" />
   }
   if (keywordString.includes('mobile') || keywordString.includes('app')) {

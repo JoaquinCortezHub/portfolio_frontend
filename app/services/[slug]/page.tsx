@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { RichTextRenderer } from "@/components/ui/rich-text-renderer"
 import { ArrowLeft, ExternalLink, Calendar, Tag } from "lucide-react"
 import Link from "next/link"
 
@@ -13,7 +14,11 @@ interface Service {
   slug: { current: string }
   description: string
   keywords: string[]
-  body: any[]
+  body: Array<{
+    _type: string
+    _key: string
+    [key: string]: any
+  }>
   relatedProjects: Array<{
     title: string
     url: string
@@ -96,14 +101,15 @@ export default function ServicePage() {
         <div className="max-w-4xl mx-auto px-6 py-20 relative z-10">
           <Link href="/#services" className="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-8 transition-colors">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Services
+            Back to Home
           </Link>
-          
-          {service.featured && (
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 rounded-full border border-emerald-400/30 mb-6">
-              <span className="text-emerald-400 text-sm font-medium">Featured Service</span>
-            </div>
-          )}
+          <div>
+            {service.featured && (
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 rounded-full border border-emerald-400/30 mb-6">
+                <span className="text-emerald-400 text-sm font-medium">Featured Service</span>
+              </div>
+            )}
+          </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
             {service.name}
@@ -113,7 +119,7 @@ export default function ServicePage() {
             {service.description}
           </p>
           
-          <div className="flex items-center gap-4 text-sm text-gray-400 mb-8">
+          {/* <div className="flex items-center gap-4 text-sm text-gray-400 mb-8">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
               <span>{new Date(service.publishedAt).toLocaleDateString()}</span>
@@ -124,7 +130,7 @@ export default function ServicePage() {
                 <span>{service.keywords.length} keywords</span>
               </div>
             )}
-          </div>
+          </div> */}
           
           {/* Keywords */}
           {service.keywords && service.keywords.length > 0 && (
@@ -148,13 +154,8 @@ export default function ServicePage() {
         {service.body && service.body.length > 0 && (
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-white">Service Details</h2>
-            <div className="prose prose-invert max-w-none">
-              {/* You can implement a rich text renderer here for the body content */}
-              <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
-                <p className="text-gray-300 leading-relaxed">
-                  Detailed service information will be rendered here from the CMS content.
-                </p>
-              </div>
+            <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
+              <RichTextRenderer content={service.body} />
             </div>
           </div>
         )}

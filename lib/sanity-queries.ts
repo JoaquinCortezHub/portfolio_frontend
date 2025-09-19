@@ -66,7 +66,23 @@ export const serviceBySlugQuery = `
     slug,
     description,
     keywords,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        asset->{
+          ...,
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height
+            }
+          }
+        }
+      }
+    },
     relatedProjects,
     featured,
     publishedAt

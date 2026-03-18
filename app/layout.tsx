@@ -3,8 +3,8 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Joaquin Cortez | AI & ML",
-  description: "I help you reach your business goals through scalables, modern AI infrastructure and Machine Learning",
+  title: "JoaquínOS",
+  description: "I help you reach your business goals through scalable, modern AI infrastructure and Machine Learning",
 }
 
 export default function RootLayout({

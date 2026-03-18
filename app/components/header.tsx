@@ -68,13 +68,13 @@ export default function Header() {
           <p className="text-gray-400 text-2xl font-medium">Hi, I'm Joaquín 👋</p>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tight">
-            Full-stack & AI
+            AI & Web3
             <br />
             <span className="text-emerald-400">Developer</span>
           </h1>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mt-4">
-            I love building eye-catching products with data-driven results that make an impact on people.
+            I love building eye-catching, memorable & high impact digital products.
           </p>
         </div>
 

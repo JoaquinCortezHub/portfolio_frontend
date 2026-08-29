@@ -30,6 +30,77 @@ interface Project {
   status: string
 }
 
+// GitHub-backed fallback keeps the Projects app useful when Sanity is empty or
+// unavailable. These entries are drawn from JoaquinCortezHub's public repos.
+const GITHUB_PROJECTS: Project[] = [
+  {
+    id: "workflow-rag-unilink",
+    title: "Workflow RAG UniLink",
+    description: "A Python workflow for a retrieval-augmented support assistant.",
+    image: "/placeholder.svg",
+    technologies: ["Python", "RAG", "AI"],
+    github: "https://github.com/JoaquinCortezHub/workflow-rag-unilink",
+    demo: "https://github.com/JoaquinCortezHub/workflow-rag-unilink",
+    featured: true,
+    status: "Active",
+  },
+  {
+    id: "featurelab",
+    title: "FeatureLab",
+    description: "A visual platform for ML engineers to discover and organize relationships between model features.",
+    image: "/placeholder.svg",
+    technologies: ["TypeScript", "Machine Learning", "Data Visualization"],
+    github: "https://github.com/JoaquinCortezHub/FeatureLab",
+    demo: "https://github.com/JoaquinCortezHub/FeatureLab",
+    featured: true,
+    status: "Research",
+  },
+  {
+    id: "dr-mike-gym-tracker",
+    title: "Dr. Mike Gym Tracker Bot",
+    description: "A Telegram bot with an Agno agent that logs workouts to a spreadsheet.",
+    image: "/placeholder.svg",
+    technologies: ["Python", "Agno", "Telegram", "Google Sheets"],
+    github: "https://github.com/JoaquinCortezHub/dr_mike_gym_tracker_bot",
+    demo: "https://github.com/JoaquinCortezHub/dr_mike_gym_tracker_bot",
+    featured: true,
+    status: "Active",
+  },
+  {
+    id: "punatech-photobooth",
+    title: "Punatech Photobooth",
+    description: "A TypeScript web experience deployed on Vercel for a photobooth workflow.",
+    image: "/placeholder.svg",
+    technologies: ["TypeScript", "Next.js", "Vercel"],
+    github: "https://github.com/JoaquinCortezHub/punatech_photobooth",
+    demo: "https://punatech-photobooth.vercel.app",
+    featured: false,
+    status: "Live",
+  },
+  {
+    id: "juby-app-stellar",
+    title: "Juby — Financial Identity",
+    description: "A Stellar-focused product exploring accessible financial identity experiences.",
+    image: "/placeholder.svg",
+    technologies: ["TypeScript", "Stellar", "Web3"],
+    github: "https://github.com/JoaquinCortezHub/juby-app-stellar",
+    demo: "https://juby-app.vercel.app",
+    featured: false,
+    status: "Live",
+  },
+  {
+    id: "battle-city-godot",
+    title: "Battle City Godot",
+    description: "A game project built with Godot and GDScript.",
+    image: "/placeholder.svg",
+    technologies: ["Godot", "GDScript", "Game Development"],
+    github: "https://github.com/JoaquinCortezHub/battle_city_godot",
+    demo: "https://github.com/JoaquinCortezHub/battle_city_godot",
+    featured: false,
+    status: "Prototype",
+  },
+]
+
 function extractTextFromBody(body: any[]): string {
   if (!body || !Array.isArray(body)) return ""
   
@@ -50,7 +121,7 @@ export default async function Projects() {
 
   try {
     const sanityProjects: SanityProject[] = await client.fetch(projectsQuery)
-    
+
     projects = sanityProjects.map((project) => ({
       id: project._id,
       title: project.title,
@@ -62,9 +133,10 @@ export default async function Projects() {
       featured: false,
       status: project.status || "Live",
     }))
+    if (projects.length === 0) projects = GITHUB_PROJECTS
   } catch (error) {
     console.error("Error fetching projects:", error)
-    projects = []
+    projects = GITHUB_PROJECTS
   }
 
   return (

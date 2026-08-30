@@ -15,6 +15,37 @@ interface Service {
   body?: unknown[]
 }
 
+const FALLBACK_SERVICES: Service[] = [
+  {
+    _id: "ai-integration",
+    name: "AI & Automation",
+    slug: { current: "ai-automation" },
+    description: "Practical AI agents and automations that connect your tools and remove repetitive work.",
+    keywords: ["Python", "Agno", "OpenAI", "n8n"],
+  },
+  {
+    _id: "web-products",
+    name: "Web Products",
+    slug: { current: "web-products" },
+    description: "Fast, accessible web applications with polished UX and maintainable full-stack foundations.",
+    keywords: ["Next.js", "React", "TypeScript", "Tailwind"],
+  },
+  {
+    _id: "data-rag",
+    name: "RAG & Knowledge Systems",
+    slug: { current: "rag-knowledge-systems" },
+    description: "Searchable knowledge experiences that turn internal documents and data into useful answers.",
+    keywords: ["RAG", "Embeddings", "FastAPI", "PostgreSQL"],
+  },
+  {
+    _id: "product-design",
+    name: "Product & UX/UI Design",
+    slug: { current: "product-design" },
+    description: "User-centered interfaces shaped by a design background and an engineering mindset.",
+    keywords: ["UX/UI", "Prototyping", "Design Systems"],
+  },
+]
+
 export function NotesApp() {
   const [services, setServices] = useState<Service[]>([])
   const [selectedService, setSelectedService] = useState<Service | null>(null)
@@ -27,12 +58,16 @@ export function NotesApp() {
     fetch("/api/services", { signal: controller.signal })
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
-        const serviceData = Array.isArray(data) ? data : []
+        const serviceData = Array.isArray(data) && data.length > 0 ? data : FALLBACK_SERVICES
         setServices(serviceData)
-        if (serviceData.length > 0) setSelectedService(serviceData[0])
+        setSelectedService(serviceData[0])
         setIsLoading(false)
       })
-      .catch(() => setIsLoading(false))
+      .catch(() => {
+        setServices(FALLBACK_SERVICES)
+        setSelectedService(FALLBACK_SERVICES[0])
+        setIsLoading(false)
+      })
     return () => controller.abort()
   }, [])
 

@@ -15,13 +15,27 @@ interface Service {
   body?: unknown[]
 }
 
-const FALLBACK_SERVICES: Service[] = [
+const CORE_SERVICES: Service[] = [
   {
-    _id: "ai-integration",
-    name: "AI & Automation",
-    slug: { current: "ai-automation" },
-    description: "Practical AI agents and automations that connect your tools and remove repetitive work.",
-    keywords: ["Python", "Agno", "OpenAI", "n8n"],
+    _id: "cloud-services",
+    name: "Cloud Services",
+    slug: { current: "cloud-services" },
+    description: "Cloud environments designed, deployed, and monitored to give your applications a reliable foundation.",
+    keywords: ["Cloud Architecture", "Deployment", "Monitoring"],
+  },
+  {
+    _id: "vps-setup-management",
+    name: "VPS Setup & Management",
+    slug: { current: "vps-setup-management" },
+    description: "Secure VPS setup, containerized deployments, and ongoing server configuration for production workloads.",
+    keywords: ["Linux", "Docker", "Security"],
+  },
+  {
+    _id: "n8n-workflow-implementation",
+    name: "n8n Workflow Implementation",
+    slug: { current: "n8n-workflow-implementation" },
+    description: "Custom n8n workflows that connect your tools, automate repetitive tasks, and keep business data moving.",
+    keywords: ["n8n", "APIs", "Automation"],
   },
   {
     _id: "web-products",
@@ -30,21 +44,19 @@ const FALLBACK_SERVICES: Service[] = [
     description: "Fast, accessible web applications with polished UX and maintainable full-stack foundations.",
     keywords: ["Next.js", "React", "TypeScript", "Tailwind"],
   },
-  {
-    _id: "data-rag",
-    name: "RAG & Knowledge Systems",
-    slug: { current: "rag-knowledge-systems" },
-    description: "Searchable knowledge experiences that turn internal documents and data into useful answers.",
-    keywords: ["RAG", "Embeddings", "FastAPI", "PostgreSQL"],
-  },
-  {
-    _id: "product-design",
-    name: "Product & UX/UI Design",
-    slug: { current: "product-design" },
-    description: "User-centered interfaces shaped by a design background and an engineering mindset.",
-    keywords: ["UX/UI", "Prototyping", "Design Systems"],
-  },
 ]
+
+const mergeServices = (data: unknown): Service[] => {
+  const cmsServices = Array.isArray(data) ? (data as Service[]) : []
+  const coreSlugs = new Set(
+    CORE_SERVICES.map((service) => service.slug.current)
+  )
+
+  return [...CORE_SERVICES, ...cmsServices.filter(
+    (service) =>
+      service?.slug?.current && !coreSlugs.has(service.slug.current)
+  )]
+}
 
 export function NotesApp() {
   const [services, setServices] = useState<Service[]>([])
@@ -58,14 +70,14 @@ export function NotesApp() {
     fetch("/api/services", { signal: controller.signal })
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
-        const serviceData = Array.isArray(data) && data.length > 0 ? data : FALLBACK_SERVICES
+        const serviceData = mergeServices(data)
         setServices(serviceData)
         setSelectedService(serviceData[0])
         setIsLoading(false)
       })
       .catch(() => {
-        setServices(FALLBACK_SERVICES)
-        setSelectedService(FALLBACK_SERVICES[0])
+        setServices(CORE_SERVICES)
+        setSelectedService(CORE_SERVICES[0])
         setIsLoading(false)
       })
     return () => controller.abort()
